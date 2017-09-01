@@ -1,19 +1,15 @@
 class RecipesController < ApplicationController
-	def single_recipe_method
-		@recipe = Recipe.first #single recipe hash
-		render "single_recipe.html.erb"
-	end
 
-	def all_recipes_method
+	def index
 		@recipes = Recipe.all #array of recipe hashes
-		render "all_recipes.html.erb"
+		render "index.html.erb"
 	end
 
-	def new_recipe_method
-		render "new_recipe.html.erb"
+	def new
+		render "new.html.erb"
 	end
 
-	def new_recipe_result_method
+	def create
 		@new_recipe = Recipe.new(
 			title: params[:title],
 			chef: params[:chef],
@@ -23,6 +19,23 @@ class RecipesController < ApplicationController
 			prep_time: params[:prep_time],
 			)
 		@new_recipe.save
-		render "new_recipe_result.html.erb"
+		render "create.html.erb"
+	end
+
+	def show
+		@recipe = Recipe.first #single recipe hash
+		render "single_recipe.html.erb"
+	end
+
+	def edit
+		
+	end
+
+	def update
+		
+	end
+
+	def destroy
+		
 	end
 end
