@@ -23,8 +23,9 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		@recipe = Recipe.first #single recipe hash
-		render "single_recipe.html.erb"
+		@recipe = Recipe.find_by(id: params[:id]) #single recipe hash
+		# @recipe = Recipe.find(params[:id])
+		render "show.html.erb"
 	end
 
 	def edit
