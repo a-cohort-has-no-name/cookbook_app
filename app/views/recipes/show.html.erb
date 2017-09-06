@@ -5,5 +5,9 @@
 <h4><%= @recipe.ingredients %></h4>
 <h4><%= @recipe.directions %></h4>
 
+<%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
+	<input type="submit" value="Delete Recipe">
+<% end %>
+
 <a href="/recipes">Back to all recipes</a>
 
