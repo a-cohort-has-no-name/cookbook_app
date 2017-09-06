@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
 	end
 
 	def create
-		@new_recipe = Recipe.new(
+		new_recipe = Recipe.new(
 			title: params[:title],
 			chef: params[:chef],
 			ingredients: params[:ingredients],
@@ -18,8 +18,9 @@ class RecipesController < ApplicationController
 			image: params[:image],
 			prep_time: params[:prep_time],
 			)
-		@new_recipe.save
-		render "create.html.erb"
+		new_recipe.save
+		flash[:success] = "Recipe successfully created!"
+		redirect_to "/recipes/#{new_recipe.id}"
 	end
 
 	def show
@@ -43,13 +44,15 @@ class RecipesController < ApplicationController
 			image: params[:image],
 			prep_time: params[:prep_time],
 			)
+		flash[:success] = "Recipe successfully updated!"
 		redirect_to "/recipes/#{recipe.id}"
 	end
 
 	def destroy
 		@recipe = Recipe.find_by(id: params[:id])
 		@recipe.destroy
-		render "destroy.html.erb"
+		flash[:success] = "Recipe succesfully destroyed!"
+		redirect_to "/recipes"
 	end
 end
 
