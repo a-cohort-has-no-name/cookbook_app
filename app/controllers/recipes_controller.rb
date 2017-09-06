@@ -34,8 +34,8 @@ class RecipesController < ApplicationController
 	end
 
 	def update
-		@recipe = Recipe.find_by(id: params[:id]) 
-		@recipe.update(
+		recipe = Recipe.find_by(id: params[:id]) 
+		recipe.update(
 			title: params[:title],
 			chef: params[:chef],
 			ingredients: params[:ingredients],
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
 			image: params[:image],
 			prep_time: params[:prep_time],
 			)
-		render "update.html.erb"
+		redirect_to "/recipes/#{recipe.id}"
 	end
 
 	def destroy
