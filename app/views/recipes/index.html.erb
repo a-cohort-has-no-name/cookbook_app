@@ -1,11 +1,19 @@
 <h1>All Recipes:</h1>
 
-<% @recipes.each do |recipe| %>
-	<h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
-	<h3><%= recipe.chef %></h3>
-	<h4><%= recipe.ingredients %></h4>
-	<h4><%= recipe.directions %></h4>
-<!--   <a data-confirm="Are you sure?" data-method="delete" rel="nofollow" href="/recipes/<%=recipe.id%>">Delete Recipe</a> -->
-<% end %>
+<div class="row">
+  <% @recipes.each do |recipe| %>
+    <div class="col-sm-4">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="<%= recipe.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title"><%= recipe.title %></h4>
+          <p class="card-text">Ingredients: <%= recipe.ingredients %><br>
+          Directions: <%= recipe.directions %></p>
+          <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">See Recipe</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<button class="btn btn-info">Is Bootstrap Working?</button>
+
