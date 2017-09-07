@@ -1,10 +1,25 @@
 <h1>Single Recipe:</h1>
 
 <h2><%= @recipe.title %></h2>
-<h3><%= @recipe.chef %></h3>
-<h4><%= @recipe.ingredients %></h4>
-<h4><%= @recipe.directions %></h4>
-<h4>Prepared in <%= @recipe.prep_time %> minutes</h4>
+<h3>Chef: <%= @recipe.chef %></h3>
+
+<h4>Ingredients:</h4>
+<ul>
+  <% @recipe.ingredients_list.each do |ingredient| %>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
+
+<h4>Directions:</h4>
+<ol>
+  <% @recipe.directions_list.each do |direction| %>
+    <li><%= direction %></li>
+  <% end %>
+</ol>
+
+<h4>Prepared in <%= @recipe.friendly_prep_time %></h4>
+
+<h5>Added <%= @recipe.friendly_created_at %></h5>
 
 <a class="btn btn-warning" href="/recipes/<%= @recipe.id %>/edit">Edit</a>
 <%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
