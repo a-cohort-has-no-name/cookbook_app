@@ -10,7 +10,9 @@
             <img class="card-img-top" src="<%= recipe.image %>" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title"><%= recipe.title %></h4>
-              <p class="card-text">Ingredients: <%= recipe.ingredients %><br>
+              <p class="card-text">
+              Prep Time: <%= recipe.prep_time %></br>
+              Ingredients: <%= recipe.ingredients %><br>
               Directions: <%= recipe.directions %></p>
               <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">See Recipe</a>
             </div>

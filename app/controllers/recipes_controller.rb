@@ -2,6 +2,10 @@ class RecipesController < ApplicationController
 
 	def index
 		@recipes = Recipe.all #array of recipe hashes
+		sort_attribute = params[:sort] #comes from query params
+		if sort_attribute
+			@recipes = Recipe.all.order(sort_attribute)
+		end
 		render "index.html.erb"
 	end
 
