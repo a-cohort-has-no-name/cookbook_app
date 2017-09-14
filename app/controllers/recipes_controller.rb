@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
 	def create
 		new_recipe = Recipe.new(
 			title: params[:title],
-			chef: params[:chef],
+			chef: current_user.name,
 			ingredients: params[:ingredients],
 			directions: params[:directions],
 			image: params[:image],
