@@ -16,12 +16,12 @@ class RecipesController < ApplicationController
 	def create
 		new_recipe = Recipe.new(
 			title: params[:title],
-			chef: current_user.name,
 			ingredients: params[:ingredients],
 			directions: params[:directions],
 			image: params[:image],
 			prep_time: params[:prep_time],
-			)
+			user_id: current_user.id
+		)
 		new_recipe.save
 		flash[:success] = "Recipe successfully created!"
 		redirect_to "/recipes/#{new_recipe.id}"
@@ -42,11 +42,10 @@ class RecipesController < ApplicationController
 		recipe = Recipe.find_by(id: params[:id]) 
 		recipe.update(
 			title: params[:title],
-			chef: params[:chef],
 			ingredients: params[:ingredients],
 			directions: params[:directions],
 			image: params[:image],
-			prep_time: params[:prep_time],
+			prep_time: params[:prep_time]
 			)
 		flash[:info] = "Recipe successfully updated!"
 		redirect_to "/recipes/#{recipe.id}"
